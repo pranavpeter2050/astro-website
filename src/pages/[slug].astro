@@ -24,6 +24,9 @@ const { Content, frontmatter} = Astro.props.post;
             <Card2>
                 <a class="btn" href="/blog">Go Back</a>
                 <h2>{ frontmatter.title }</h2>
+                <div>
+                    Written by <strong>{ frontmatter.author }</strong> on {new Date( frontmatter.date ).toLocaleDateString()}
+                </div>
                 <Content />
             </Card2>
         </div>
