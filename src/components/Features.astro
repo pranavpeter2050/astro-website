@@ -1,4 +1,6 @@
 ---
+import Card from "./Card.astro";
+
 const featuresData = [
     {title: 'Zero JavaScript Runtime', body: 'Astro renders HTML on the server and strips away any remaining, unused JavaScript.'},
     {title: 'The Power of Islands', body: 'Need interactive UI? Load individual, non-blocking component islands in parallel.'},
@@ -9,10 +11,7 @@ const featuresData = [
 <section class="features">
     <div class="container">
         { featuresData.map(feature => (
-            <div class="card">
-                <h3>{ feature.title }</h3>
-                <p>{ feature.body }</p>
-            </div>
+            <Card title={ feature.title } body={ feature.body } />
         ))}
     </div>
 </section>
