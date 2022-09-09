@@ -27,7 +27,7 @@ const posts = await Astro.glob('../posts/*.md');
             { posts_from_api.map(post => (
                 <Card2>
                     <h3>{ post.title }</h3>
-                    <p>{ post.excerpt }</p>
+                    <p>{ post.body }</p>
                 </Card2>
             ))}
         </div>
