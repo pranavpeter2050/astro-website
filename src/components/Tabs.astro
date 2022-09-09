@@ -1,19 +1,25 @@
+---
+export interface Props {
+    activeTextColor?: string;
+    headings: string[];
+    contents: string[];
+}
+
+const { headings, contents, activeTextColor = '#A741FF' } = Astro.props as Props;
+---
+
 <div class="tabs">
     <ul class="tabs-header">
-      <li class="default-tab">NPM</li>
-      <li>PNPM</li>
-      <li>YARN</li>
+        {headings.map(heading => (
+            <li>{ heading }</li>
+        ))}
     </ul>
     <ul class="tabs-content">
-      <li class="tab">
-        <code>$ npm create astro@latest</code>
-      </li>
-      <li class="tab">
-        <code>$ pnpm create astro@latest</code>
-      </li>
-      <li class="tab">
-        <code>$ yarn create astro</code>
-      </li>
+        {contents.map(content => (
+            <li class="tab">
+              <code>{ content }</code>
+            </li>
+        ))}
     </ul>
 </div>
 
@@ -43,7 +49,7 @@
 }
 </style>
 
-<script>
+<script define:vars={{ activeTextColor }}>
     function createTabs(element) {
         const header = element.querySelector('.tabs-header');
         const content = element.querySelector('.tabs-content');
@@ -59,7 +65,7 @@
             tab_contents[current_tab_index].style.display = 'none';
             }
             tab_headers[index].style.fontWeight = 800;
-            tab_headers[index].style.color = '#A741FF';
+            tab_headers[index].style.color = activeTextColor;
             tab_contents[index].style.display = 'flex';
             current_tab_index = index;
         }
